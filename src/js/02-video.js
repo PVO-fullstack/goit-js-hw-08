@@ -6,9 +6,18 @@ const throttle = require('lodash.throttle');
 
 const timeForStart = localStorage.getItem('videoplayer-current-time');
 
-player.on('play', function () {
-  player.setCurrentTime(timeForStart);
-});
+player.on('play', onPlay);
+player.on('pause', onPause);
+
+function onPause() {
+player.off('play');
+console.log('зняли слухача play');
+};
+
+function onPlay () {
+  player.setCurrentTime(timeForStart);  
+  console.log('play');
+};
 
 player.on('timeupdate', throttle(pastVideo, 1000));
 
@@ -16,7 +25,7 @@ function pastVideo(currentTime) {
   const viewedTime = currentTime.seconds;
     localStorage.setItem('videoplayer-current-time', viewedTime);
     console.log(viewedTime);
-  }
+  };
 
 
 
