@@ -1,0 +1,2 @@
+!function(){document.querySelector(".feedback-form").addEventListener("submit",(function(e){e.preventDefault();var t=e.currentTarget.elements,a=t.email,r=t.message;if(""===a.value||""===r.value)alert("Bсі поля повинні бути заповнені");else{var l={email:a.value,message:r.value};console.log(l),localStorage.setItem("feedback-form-state",JSON.stringify(l)),e.currentTarget.reset()}}));var e=localStorage.getItem("feedback-form-state"),t=JSON.parse(e);console.log(t)}();
+//# sourceMappingURL=03-feedback.863f887f.js.map

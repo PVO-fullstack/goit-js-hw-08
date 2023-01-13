@@ -1,0 +1,2 @@
+document.querySelector(".feedback-form").addEventListener("submit",(function(e){e.preventDefault();const{elements:{email:t,message:a}}=e.currentTarget;if(""===t.value||""===a.value)alert("Bсі поля повинні бути заповнені");else{const l={email:t.value,message:a.value};console.log(l),localStorage.setItem("feedback-form-state",JSON.stringify(l)),e.currentTarget.reset()}}));const e=localStorage.getItem("feedback-form-state"),t=JSON.parse(e);console.log(t);
+//# sourceMappingURL=03-feedback.22d95ac1.js.map
