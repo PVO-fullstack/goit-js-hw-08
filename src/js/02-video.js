@@ -7,6 +7,7 @@ const throttle = require('lodash.throttle');
 const timeForStart = localStorage.getItem('videoplayer-current-time');
 
 player.on('play', function () {
+  console.log('played the video!');
   player.setCurrentTime(timeForStart);
 });
 
@@ -15,7 +16,7 @@ player.on('timeupdate', throttle(pastVideo, 1000));
 function pastVideo(currentTime) {
   const viewedTime = currentTime.seconds;
     localStorage.setItem('videoplayer-current-time', viewedTime);
-    console.log('Проглянуто часу:', viewedTime);
+    console.log(viewedTime);
   }
 
 
