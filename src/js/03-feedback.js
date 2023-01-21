@@ -1,9 +1,10 @@
 const formSubmit = document.querySelector('.feedback-form');
 const emailForm = document.querySelector('.feedback-form input');
 const textareaForm = document.querySelector('.feedback-form textarea');
+const throttle = require('lodash.throttle');
 
 formSubmit.addEventListener('submit', handleSubmit);
-formSubmit.addEventListener('input', onInputData);
+formSubmit.addEventListener('input', throttle(onInputData, 500));
 
 onFormReload();
 
