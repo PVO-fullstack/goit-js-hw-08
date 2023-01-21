@@ -10,25 +10,35 @@ onFormReload();
 const formData = {}
 
 function onInputData(event) {
- formData[event.target.name] = event.target.value;
+  if (emailForm) {
+    formData.email = emailForm.value;
+  }
+  if (textareaForm) {
+    formData.message = textareaForm.value;
+  }
+  formData[event.target.name] = event.target.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 }
 
 
 function handleSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
   event.currentTarget.reset();
-    localStorage.removeItem('feedback-form-state');
-
-      }
+  localStorage.removeItem('feedback-form-state');
+  console.log(formData);
+}
 
 function onFormReload() {
-const savedData = localStorage.getItem('feedback-form-state');
-const parsedData = JSON.parse(savedData);  
+  const savedData = localStorage.getItem('feedback-form-state');
+  const parsedData = JSON.parse(savedData);
   if (parsedData) {
-emailForm.value = parsedData.email;
-textareaForm.value = parsedData.message;
-        }
-      }
+    const { email, message } = parsedData;
+    if (email) {
+      emailForm.value = email;
+    } if (message) {
+      textareaForm.value = message;
+    }
+  }
+}
 
 
