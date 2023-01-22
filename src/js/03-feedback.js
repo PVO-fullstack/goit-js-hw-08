@@ -24,9 +24,11 @@ function onInputData(event) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  event.currentTarget.reset();
-  localStorage.removeItem('feedback-form-state');
-  console.log(formData);
+  if (emailForm.value && textareaForm.value) {
+    event.currentTarget.reset();
+    localStorage.removeItem('feedback-form-state');
+    console.log(formData);
+  }
 }
 
 function onFormReload() {
